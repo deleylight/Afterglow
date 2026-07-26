@@ -7,6 +7,11 @@ pub fn window_run(
 ) -> Result<(), slint::PlatformError> {
     let window = widnow_handle?;
     //todo这里需要把config完善,并且user_config并没有写完,先要完善那里
-    let config = UserConfig::new();
+    let _config = UserConfig::load().unwrap_or_else(|error| {
+        eprintln!("{error}");
+        UserConfig::new()
+    });
+    println!("{:?}", _config.timer.total_rounds);
+
     window.run()
 }
