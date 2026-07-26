@@ -1,9 +1,10 @@
 [package]
-name = "after"
+name = "afterglow"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+serde_json = "1.0.151"
 slint = "1.17.1"
 
 [build-dependencies]

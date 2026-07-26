@@ -1,5 +1,8 @@
 export component MainWindow inherits Window {
-    width: 400px;
-    height: 300px;
-    title: "基本窗口";
+    in-out property <int> window_width:1280;
+    width: window_width*1px;
+    in-out property <int> window_height:720;
+    height: window_height*1px;
+    in-out property <string> window_title: "余温";
+    title: window_title;
 }

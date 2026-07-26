@@ -1,6 +1,7 @@
-slint::include_modules!();
+use afterglow::MainWindow;
+use afterglow::window;
 
 fn main() -> Result<(), slint::PlatformError> {
-    let main_window = MainWindow::new()?;
-    main_window.run()
+    let main_window = MainWindow::new();
+    window::manager::window_run(main_window)
 }
