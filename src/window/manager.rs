@@ -11,7 +11,5 @@ pub fn window_run(
         eprintln!("{error}");
         UserConfig::new()
     });
-    println!("{:?}", _config.timer.total_rounds);
-
     window.run()
 }
