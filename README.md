@@ -12,5 +12,4 @@
 
    📊 状态追踪：软件将实时记录你的专注数据，并提供状态提醒与互动。
 
-
-[![Made with Slint](https://github.com/slint-ui/slint/raw/master/logo/MadeWithSlint-logo-whitebg.png)](https://slint.dev)
+![Made with Slint](https://github.com/slint-ui/slint/raw/master/logo/MadeWithSlint-logo-whitebg.png)
