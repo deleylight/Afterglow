@@ -11,3 +11,6 @@
    🎮 娱乐 & 休息：合理安排劳逸结合，享受陪伴的时光。
 
    📊 状态追踪：软件将实时记录你的专注数据，并提供状态提醒与互动。
+
+
+[![Made with Slint](https://github.com/slint-ui/slint/raw/master/logo/MadeWithSlint-logo-whitebg.png)](https://slint.dev)
