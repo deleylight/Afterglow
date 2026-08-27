@@ -39,7 +39,7 @@ impl Aftergolw {
         }
     }
 
-    fn view(&self) -> iced::Element<Message> {
+    fn view(&self) -> iced::Element<'_, Message> {
         column![
             button("Save").on_press(Message::Config(ConfigMessage::Saved)),
             button("Load").on_press(Message::Config(ConfigMessage::Loaded)),

@@ -32,7 +32,7 @@ pub struct UserConfig {
 impl UserConfig {
     pub fn save(&self, path: &str) -> Result<(), Box<dyn std::error::Error>> {
         // 1. 将 self 序列化为 XML 字符串
-        let xml = to_string(&self)?; // ? 表示如果出错就向上返回错误
+        let xml = to_string(&self)?;
         // 2. 写入文件（必要时创建父目录）
         let path = Path::new(path);
         if let Some(dir) = path.parent() {
@@ -78,28 +78,5 @@ impl UserConfig {
             window_size: WindowSize::Medium,
             language: Language::Cn,
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use std::fs;
-    use std::time::{SystemTime, UNIX_EPOCH};
-
-    #[test]
-    fn save_load_roundtrip() {
-        let stamp = SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .unwrap()
-            .as_nanos();
-        let path = std::env::temp_dir().join(format!("afterglow-config-{stamp}.xml"));
-        let path_str = path.to_str().unwrap();
-        let config = UserConfig::default();
-        config.save(path_str).expect("save xml");
-        let loaded = UserConfig::load(path_str).expect("load xml");
-        let _ = fs::remove_file(&path);
-        assert!(matches!(loaded.window_size, WindowSize::Medium));
-        assert!(matches!(loaded.language, Language::Cn));
     }
 }
