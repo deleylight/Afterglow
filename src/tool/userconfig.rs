@@ -3,7 +3,6 @@ use quick_xml::se::to_string;
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::fs;
-use std::path::PathBuf;
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum WindowSize {
     Small,
