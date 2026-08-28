@@ -77,7 +77,7 @@ impl UserConfig {
     pub fn default() -> Self {
         Self {
             window_size: WindowSize::Medium,
-            language: Language::Cn,
+            language: Language::En,
         }
     }
 }
