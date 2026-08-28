@@ -1,6 +1,7 @@
 use afterglow::tool::userconfig::*;
 use afterglow::tool::window;
-use iced::widget::{button, column};
+use iced::widget::image;
+use iced::{ContentFit, Fill};
 
 fn main() -> iced::Result {
     let user_config = UserConfig::new();
@@ -20,9 +21,7 @@ struct Aftergolw {
 }
 
 #[derive(Debug, Clone)]
-enum Message {
-    Config(ConfigMessage),
-}
+enum Message {}
 
 impl Aftergolw {
     fn new(user_config: UserConfig) -> Self {
@@ -33,29 +32,18 @@ impl Aftergolw {
         window::title(self.user_config.language)
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::Config(msg) => match msg {
-                ConfigMessage::Loaded => match UserConfig::load(&UserConfig::config_path()) {
-                    Ok(config) => self.user_config = config,
-
-                    Err(e) => eprintln!("加载配置失败: {e}"),
-                },
-                ConfigMessage::Saved => {
-                    if let Err(e) = self.user_config.save(&UserConfig::config_path()) {
-                        eprintln!("保存配置失败: {e}");
-                    }
-                }
-            },
-        }
-    }
+    fn update(&mut self, _message: Message) {}
 
     fn view(&self) -> iced::Element<'_, Message> {
-        column![
-            button("Save").on_press(Message::Config(ConfigMessage::Saved)),
-            button("Load").on_press(Message::Config(ConfigMessage::Loaded)),
-        ]
-        .spacing(10)
-        .into()
+        let fit = match self.user_config.window_size {
+            WindowSize::Fullscreen => ContentFit::Cover,
+            _ => ContentFit::Fill,
+        };
+
+        image(window::background(self.user_config.window_size))
+            .width(Fill)
+            .height(Fill)
+            .content_fit(fit)
+            .into()
     }
 }

@@ -9,6 +9,7 @@ pub enum WindowSize {
     Small,
     Medium,
     Large,
+    Fullscreen,
 }
 
 #[derive(Debug, Clone)]
