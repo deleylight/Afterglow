@@ -23,7 +23,7 @@ pub enum Language {
     En,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub struct UserConfig {
     pub window_size: WindowSize,
     pub language: Language,

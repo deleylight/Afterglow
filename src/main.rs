@@ -1,9 +1,18 @@
 use afterglow::tool::userconfig::*;
+use afterglow::tool::window;
 use iced::widget::{button, column};
+
 fn main() -> iced::Result {
-    iced::application(Aftergolw::new, Aftergolw::update, Aftergolw::view)
-        .title("After glow")
-        .run()
+    let user_config = UserConfig::new();
+
+    iced::application(
+        move || Aftergolw::new(user_config),
+        Aftergolw::update,
+        Aftergolw::view,
+    )
+    .title(Aftergolw::title)
+    .window(window::settings(&user_config))
+    .run()
 }
 
 struct Aftergolw {
@@ -16,10 +25,12 @@ enum Message {
 }
 
 impl Aftergolw {
-    fn new() -> Self {
-        Self {
-            user_config: UserConfig::new(),
-        }
+    fn new(user_config: UserConfig) -> Self {
+        Self { user_config }
+    }
+
+    fn title(&self) -> String {
+        window::title(self.user_config.language)
     }
 
     fn update(&mut self, message: Message) {
